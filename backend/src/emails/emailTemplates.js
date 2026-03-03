@@ -1,3 +1,5 @@
+export function createWelcomeEmailTemplate(name, clientURL) {
+  return `
 <!doctype html>
 <html lang="en">
   <head>
@@ -127,3 +129,5 @@
     </div>
   </body>
 </html>
+ `;
+}
