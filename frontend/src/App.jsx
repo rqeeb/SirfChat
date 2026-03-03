@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div>
-      Leght - A chat app.
+      Sirf - A chat app.
       [WIP]
     </div>
   )

@@ -4,3 +4,7 @@ dotenv.config();
 
 export const resendClient = new resend(process.env.RESEND_API_KEY);
 
+export const senderObject ={
+    email: process.env.EMAIL_FROM;
+    name: process.env.EMAIL_FROM_NAME;
+}
