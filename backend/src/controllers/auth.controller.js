@@ -69,7 +69,8 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
-  // if(!email || !password) return.status(400).json({message:"All fields are required."});
+  if (!email || !password)
+    return res.status(400).json({ message: "All fields are required." });
 
   try {
     const user = await User.findOne({ email });
@@ -96,4 +97,12 @@ export const login = async (req, res) => {
 export const logout = async (_, res) => {
   res.cookies("jwt", "", { maxAge: 0 });
   res.status(200).json({ message: "Logged out succesfully" });
+};
+
+
+export const updateProfile = async (req, res) => {
+  const { email } = req.body;
+
+  const user = await User.findOne({ email });
+  
 };
