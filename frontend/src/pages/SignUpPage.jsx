@@ -20,7 +20,6 @@ const SignUpPage = () => {
             {/* FORM - LEFT SIDE */}
             <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-600/30">
               <div className="w-full max-w-md">
-                
                 <div className="text-center mb-8">
                   <MessageCircleIcon className="w-12 h-12 mx-auto text-slate-400 mb-4" />
                   <h2 className="text-2xl font-bold text-slate-200 mb-2">
@@ -31,7 +30,6 @@ const SignUpPage = () => {
 
                 {/* FORM */}
                 <form onSubmit={handleSubmit} className="space-y-6">
-               
                   <div>
                     <label className="auth-input-label">Full Name</label>
                     <div className="relative">
@@ -49,8 +47,65 @@ const SignUpPage = () => {
                     </div>
                   </div>
 
-                
-                
+                  <div>
+                    <label className="auth-input-label">Email</label>
+                    <div className="relative">
+                      <MailIcon className="auth-input-icon" />
+
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        
+                        className="input"
+                        placeholder="john@gmail.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="auth-input-label">Password</label>
+                    <div className="relative">
+                      <LockIcon className="auth-input-icon" />
+
+                      <input
+                        type="password"
+                        value={formData.password}
+                        onChange={(e) =>
+                          setFormData({ ...formData, password: e.target.value })
+                        }
+                        className="input"
+                        placeholder="Enter your password"
+                      />
+                    </div>
+                  </div>
+
+                  {/* SUBMIT BUTTON */}
+                  <button
+                    className="auth-btn"
+                    type="submit"
+                    disabled={isSigningUp}
+                  >
+                    {isSigningUp ? (
+                      <LoaderIcon className="w-full h-5 animate-spin text-center" />
+                    ) : (
+                      "Create Account"
+                    )}
+                  </button>
+                </form>
+
+                <div className="mt-6 text-center">
+                  <Link to="/login" className="auth-link">
+                    Already have an account? Login
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* FORM - RIGHT SIDE */}
+            
           </div>
         </BorderAnimatedContainer>
       </div>
