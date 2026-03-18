@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router";
 import { useAuthStore } from "../store/useAuthStore.js";
 import BorderAnimatedContainer from "../components/borderAnimatedContainer.jsx";
+import {
+  MessageCircleIcon,
+  UserIcon,
+  MailIcon,
+  LockIcon,
+  LoaderIcon,
+} from "lucide-react";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -8,33 +16,34 @@ const SignUpPage = () => {
     email: "",
     password: "",
   });
+
   const { signUp, isSigningUp } = useAuthStore();
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <div className="w-full flex items-center justify-center p-4 bg-slate-900">
+    <div className="w-full flex items-center justify-center p-4 bg-[#e6dccb] text-[#2f2926]">
       <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]">
         <BorderAnimatedContainer>
           <div className="w-full flex flex-col md:flex-row">
             {/* FORM - LEFT SIDE */}
-            <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-600/30">
+            <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-[#b8aa98]/60">
               <div className="w-full max-w-md">
                 <div className="text-center mb-8">
-                  <MessageCircleIcon className="w-12 h-12 mx-auto text-slate-400 mb-4" />
-                  <h2 className="text-2xl font-bold text-slate-200 mb-2">
+                  <MessageCircleIcon className="w-12 h-12 mx-auto text-[#7a6d62] mb-4" />
+                  <h2 className="text-2xl font-bold text-[#2f2926] mb-2">
                     Create Account
                   </h2>
-                  <p className="text-slate-400">Sign up for a new account</p>
+                  <p className="text-[#7a6d62]">Sign up for a new account</p>
                 </div>
 
-                {/* FORM */}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label className="auth-input-label">Full Name</label>
                     <div className="relative">
                       <UserIcon className="auth-input-icon" />
-
                       <input
                         type="text"
                         value={formData.fullName}
@@ -51,14 +60,12 @@ const SignUpPage = () => {
                     <label className="auth-input-label">Email</label>
                     <div className="relative">
                       <MailIcon className="auth-input-icon" />
-
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        
                         className="input"
                         placeholder="john@gmail.com"
                       />
@@ -69,7 +76,6 @@ const SignUpPage = () => {
                     <label className="auth-input-label">Password</label>
                     <div className="relative">
                       <LockIcon className="auth-input-icon" />
-
                       <input
                         type="password"
                         value={formData.password}
@@ -82,14 +88,13 @@ const SignUpPage = () => {
                     </div>
                   </div>
 
-                  {/* SUBMIT BUTTON */}
                   <button
                     className="auth-btn"
                     type="submit"
                     disabled={isSigningUp}
                   >
                     {isSigningUp ? (
-                      <LoaderIcon className="w-full h-5 animate-spin text-center" />
+                      <LoaderIcon className="mx-auto h-5 w-5 animate-spin" />
                     ) : (
                       "Create Account"
                     )}
@@ -105,7 +110,26 @@ const SignUpPage = () => {
             </div>
 
             {/* FORM - RIGHT SIDE */}
-            
+            <div className="hidden md:w-1/2 md:flex items-center justify-center p-6 bg-[#e6dccb]">
+              <div>
+                <img
+                  src="/signup.png"
+                  alt="People using mobile devices"
+                  className="w-full h-auto object-contain mix-blend-multiply opacity-90"
+                />
+                <div className="mt-6 text-center">
+                  <h3 className="text-xl font-medium text-[#d65a38]">
+                    Zonnect
+                  </h3>
+
+                  <div className="mt-4 flex justify-center gap-4">
+                    <span className="auth-badge">Free</span>
+                    <span className="auth-badge">Easy Setup</span>
+                    <span className="auth-badge">Private</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </BorderAnimatedContainer>
       </div>

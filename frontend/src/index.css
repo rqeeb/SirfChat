@@ -7,3 +7,28 @@
   initial-value: 0deg;
   syntax: "<angle>";
 }
+
+.input {
+  @apply w-full bg-[#f3eadf] border border-[#b8aa98] rounded-md 
+  py-2 pl-10 pr-4 text-[#2f2926] placeholder-[#8a7a6a]
+  focus:ring-0 focus:border-[#d65a38];
+}
+.auth-input-icon {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 text-[#7a6d62] size-5;
+}
+.auth-input-label {
+  @apply block text-sm font-medium text-[#5e544c] mb-2;
+}
+
+.auth-badge {
+  @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full 
+  bg-[#d65a38]/10 text-[#d65a38];
+}
+.auth-btn {
+  @apply w-full bg-[#d65a38] text-white rounded-md py-2.5 font-medium
+  hover:bg-[#b94d2f] transition-colors;
+}
+.auth-link {
+  @apply px-4 py-2 inline-block rounded-md text-[#d65a38]
+  hover:text-[#b94d2f] text-sm transition-colors;
+}
