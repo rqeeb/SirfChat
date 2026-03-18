@@ -41,6 +41,7 @@ function App() {
           path="/signup"
           element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />}
         />
+        
       </Routes>
 
     
