@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import BorderAnimatedContainer from "../components/BorderAnimatedContainer";
+import borderAnimatedContainer from "../components/borderAnimatedContainer";
 import {
   MessageCircleIcon,
   MailIcon,
@@ -19,11 +19,18 @@ function LoginPage() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-4 bg-[#f3eadf] text-[#2f2926]">
-      <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]">
-        <BorderAnimatedContainer>
+    <div className="w-full h-auto flex items-center justify-center p-4 bg-[#f3eadf] text-[#2f2926]">
+      <div
+        className="relative w-full max-w-4xl md:h-[600px] h-[700px] rounded-2xl 
+border border-[#B8AA98]/30 
+shadow-[0_25px_70px_rgba(0,0,0,0.2)] 
+bg-[#E6DCCB] 
+before:absolute before:inset-0 before:rounded-2xl 
+before:border before:border-white/20 before:pointer-events-none"
+      >
+        <borderAnimatedContainer>
           <div className="w-full flex flex-col md:flex-row bg-[#e6dccb]">
-            {/* FORM CLOUMN - LEFT SIDE */}
+            {/* FORM CLOUMN - LEFT SIDE  */}
             <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-[#b8aa98]/60 bg-[#e6dccb]">
               <div className="w-full max-w-md">
                 {/* HEADING TEXT */}
@@ -103,10 +110,10 @@ function LoginPage() {
                 <img
                   src="/login.png"
                   alt="People using mobile devices"
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain mix-blend-multiply opacity-90"
                 />
                 <div className="mt-6 text-center">
-                  <h3 className="text-xl font-medium text-cyan-400">
+                  <h3 className="text-xl font-medium text-[#d65a38]">
                     Connect anytime, anywhere
                   </h3>
 
@@ -119,9 +126,10 @@ function LoginPage() {
               </div>
             </div>
           </div>
-        </BorderAnimatedContainer>
+        </borderAnimatedContainer>
       </div>
     </div>
   );
 }
+
 export default LoginPage;

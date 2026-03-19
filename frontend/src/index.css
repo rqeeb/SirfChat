@@ -32,3 +32,20 @@
   @apply px-4 py-2 inline-block rounded-md text-[#d65a38]
   hover:text-[#b94d2f] text-sm transition-colors;
 }
+
+
+@keyframes slide {
+  0% {
+    left: -30%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -30%;
+  }
+}
+
+.animate-slide {
+  animation: slide 1.6s ease-in-out infinite;
+}

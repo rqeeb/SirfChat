@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore.js";
-import BorderAnimatedContainer from "../components/borderAnimatedContainer.jsx";
+import borderAnimatedContainer from "../components/borderAnimatedContainer.jsx";
 import {
   MessageCircleIcon,
   UserIcon,
@@ -24,9 +24,16 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-4 bg-[#e6dccb] text-[#2f2926]">
-      <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]">
-        <BorderAnimatedContainer>
+    <div className="w-full flex items-center justify-center p-4 bg-[#f3eadf] text-[#2f2926]">
+      <div
+        className="relative w-full max-w-4xl md:h-[600px] h-[700px] rounded-2xl 
+border border-[#B8AA98]/30 
+shadow-[0_25px_70px_rgba(0,0,0,0.2)] 
+bg-[#E6DCCB] 
+before:absolute before:inset-0 before:rounded-2xl 
+before:border before:border-white/20 before:pointer-events-none"
+      >
+        <borderAnimatedContainer>
           <div className="w-full flex flex-col md:flex-row">
             {/* FORM - LEFT SIDE */}
             <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-[#b8aa98]/60">
@@ -115,7 +122,7 @@ const SignUpPage = () => {
                 <img
                   src="/signup.png"
                   alt="People using mobile devices"
-                  className="w-full h-auto object-contain mix-blend-multiply opacity-90"
+                  className="w-full max-w-[420px] scale-[1.3] object-contain mix-blend-multiply opacity-90"
                 />
                 <div className="mt-6 text-center">
                   <h3 className="text-xl font-medium text-[#d65a38]">
@@ -131,7 +138,7 @@ const SignUpPage = () => {
               </div>
             </div>
           </div>
-        </BorderAnimatedContainer>
+        </borderAnimatedContainer>
       </div>
     </div>
   );
