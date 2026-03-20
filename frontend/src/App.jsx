@@ -18,7 +18,7 @@ function App() {
     checkAuth();
   }, [checkAuth]);
 
-  if (true) return <PageLoader />;
+  if (isCheckingAuth) return <PageLoader />;
   return (
     <div
       className="min-h-screen bg-[#f3eadf] relative flex items-center 
@@ -31,15 +31,17 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={authUser ? <ChatPage /> : <Navigate to={"/login"} />}
+          element={authUser ? <ChatPage /> : <Navigate to={"/signup"} />}
         />
         <Route
           path="/login"
           element={!authUser ? <LoginPage /> : <Navigate to={"/"} />}
+          // element= {<LoginPage/>}
         />
         <Route
           path="/signup"
           element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />}
+          // element={<SignUpPage />}
         />
         
       </Routes>

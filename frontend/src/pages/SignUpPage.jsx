@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore.js";
-import borderAnimatedContainer from "../components/borderAnimatedContainer.jsx";
+import BorderAnimatedContainer from "../components/borderAnimatedContainer.jsx";
 import {
   MessageCircleIcon,
   UserIcon,
@@ -19,8 +19,9 @@ const SignUpPage = () => {
 
   const { signUp, isSigningUp } = useAuthStore();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await signUp(formData);
   };
 
   return (
@@ -33,7 +34,7 @@ bg-[#E6DCCB]
 before:absolute before:inset-0 before:rounded-2xl 
 before:border before:border-white/20 before:pointer-events-none"
       >
-        <borderAnimatedContainer>
+        <BorderAnimatedContainer>
           <div className="w-full flex flex-col md:flex-row">
             {/* FORM - LEFT SIDE */}
             <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-[#b8aa98]/60">
@@ -138,7 +139,7 @@ before:border before:border-white/20 before:pointer-events-none"
               </div>
             </div>
           </div>
-        </borderAnimatedContainer>
+        </BorderAnimatedContainer>
       </div>
     </div>
   );
