@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
-    <>      
+    <>
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f14_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f14_1px,transparent_1px)] bg-[size:14px_24px]" />
 
       <div className="relative z-10 w-full flex items-center justify-center min-h-screen px-6">
@@ -21,7 +23,10 @@ const LandingPage = () => {
           </p>
 
           <div className="mt-10 flex items-center justify-center">
-            <button className="px-6 py-3 rounded-full bg-[#2f2926] text-[#f3eadf] hover:opacity-90 transition">
+            <button
+              onClick={() => navigate("/")}
+              className="px-6 py-3 rounded-full bg-[#2f2926] text-[#f3eadf] hover:opacity-90 transition"
+            >
               Get Started (beta)
             </button>
           </div>

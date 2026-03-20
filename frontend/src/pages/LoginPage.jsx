@@ -110,7 +110,7 @@ before:border before:border-white/20 before:pointer-events-none"
                 <img
                   src="/login.png"
                   alt="People using mobile devices"
-                  className="w-full h-auto object-contain mix-blend-multiply opacity-90"
+                  className="w-full max-w-[420px] scale-[1.3] object-contain mix-blend-multiply opacity-90"
                 />
                 <div className="mt-6 text-center">
                   <h3 className="text-xl font-medium text-[#d65a38]">
