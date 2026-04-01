@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore.js";
-import BorderAnimatedContainer from "../components/borderAnimatedContainer.jsx";
+import BorderAnimatedContainer from "../components/BorderAnimatedContainer.jsx";
 import {
   MessageCircleIcon,
   UserIcon,
@@ -123,7 +123,7 @@ before:border before:border-white/20 before:pointer-events-none"
                 <img
                   src="/signup.png"
                   alt="People using mobile devices"
-                 className="w-full h-auto object-contain mix-blend-multiply opacity-90"
+                  className="w-full h-auto object-contain mix-blend-multiply opacity-90"
                 />
                 <div className="mt-6 text-center">
                   <h3 className="text-xl font-medium text-[#d65a38]">

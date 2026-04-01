@@ -25,9 +25,7 @@ function ChatsList() {
           onClick={() => setSelectedUser(chat)}
         >
           <div className="flex items-center gap-3">
-            <div
-              className={`avatar online`}
-            >
+            <div className={`avatar online`}>
               {/* //TODO: use socket to fix online status. */}
               <div className="size-12 rounded-full">
                 <img

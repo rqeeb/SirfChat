@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import borderAnimatedContainer from "../components/borderAnimatedContainer";
+import BorderAnimatedContainer from "../components/BorderAnimatedContainer";
 import {
   MessageCircleIcon,
   MailIcon,
@@ -28,7 +28,7 @@ bg-[#E6DCCB]
 before:absolute before:inset-0 before:rounded-2xl 
 before:border before:border-white/20 before:pointer-events-none"
       >
-        <borderAnimatedContainer>
+        <BorderAnimatedContainer>
           <div className="w-full flex flex-col md:flex-row bg-[#e6dccb]">
             {/* FORM CLOUMN - LEFT SIDE  */}
             <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-[#b8aa98]/60 bg-[#e6dccb]">
@@ -126,7 +126,7 @@ before:border before:border-white/20 before:pointer-events-none"
               </div>
             </div>
           </div>
-        </borderAnimatedContainer>
+        </BorderAnimatedContainer>
       </div>
     </div>
   );
