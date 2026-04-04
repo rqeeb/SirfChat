@@ -19,15 +19,24 @@ export const socketAuthMiddleware = async (socket, next) => {
     if (!decoded) {
       console.log("Socket connection rejected: Invalid token");
       return next(new Error("Unauthorized - no token provided"));
+    }
 
     const user = await User.findById(decoded.userId).select("-password");
-    if(!user){
-        console.log("Socket connection rejected: User not found ")
-        return next(new Error("User not found"));
+    if (!user) {
+      console.log("Socket connection rejected: User not found ");
+      return next(new Error("User not found"));
     }
 
     socket.user = user;
-    socket.userId= user._id.toString();
-    }
-  } catch (error) {}
+    socket.userId = user._id.toString();
+
+    console.log(
+      `Socket authenticated for user: ${user.fullName} (${user._id})`,
+    );
+
+    next();
+  } catch (error) {
+    console.log("Error in socket authentication:", error.message);
+    next(new Error("Unauthorized - Authentication failed"));
+  }
 };
