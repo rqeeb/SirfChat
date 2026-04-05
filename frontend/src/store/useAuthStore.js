@@ -7,6 +7,8 @@ export const useAuthStore = create((set, get) => ({
   isCheckingAuth: true,
   isSigningUp: false,
   isLoggingIn: false,
+  socket:null,
+  onlineUsers:[],
 
   checkAuth: async () => {
     try {
@@ -41,6 +43,8 @@ export const useAuthStore = create((set, get) => ({
       set({ authUser: res.data });
 
       toast.success("Logged In!");
+      
+      get().connectSocket();
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
     } finally {
@@ -53,9 +57,10 @@ export const useAuthStore = create((set, get) => ({
       await axiosInstance.post("/auth/logout");
       set({ authUser: null });
       toast.success("Logged out sucessfully");
+      get().disconnectSocket();
     } catch (err) {
       toast.error("Error loggin out");
-      // console.log()
+     
     }
   },
 
@@ -69,4 +74,28 @@ export const useAuthStore = create((set, get) => ({
       toast.error(error.response?.data?.message || "Failed to update profile");
     }
   },
+
+  connectSocket: () => {
+    const { authUser } = get();
+    if (!authUser || get().socket?.connected) return;
+
+    const socket = io(BASE_URL, {
+      withCredentials: true,
+    });
+
+    socket.connect();
+
+    set({ socket });
+
+   //listen events
+    socket.on("getOnlineUsers", (userIds) => {
+      set({ onlineUsers: userIds });
+    });
+  },
+
+  disconnectSocket: () => {
+    if (get().socket?.connected) get().socket.disconnect();
+  },
+
+
 }));
