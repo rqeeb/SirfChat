@@ -21,7 +21,7 @@ function ChatHeader() {
   return (
     <div className="flex justify-between items-center bg-[#e6dccb]/90 border-b border-[#b8aa98]/60 px-6 py-4 min-h-[84px]">
       <div className="flex items-center space-x-3 min-w-0">
-        <div className={`avatar ${isOnline ? "online" : ""}`}>
+        <div className={`avatar ${isOnline ? "online" : "offline"}`}>
           <div className="w-12 rounded-full border border-[#b8aa98]/70">
             <img
               src={selectedUser.profilePic || "/avatar.png"}
