@@ -7,13 +7,14 @@ export const useAuthStore = create((set, get) => ({
   isCheckingAuth: true,
   isSigningUp: false,
   isLoggingIn: false,
-  socket:null,
-  onlineUsers:[],
+  socket: null,
+  onlineUsers: [],
 
   checkAuth: async () => {
     try {
       const res = await axiosInstance.get("/auth/check");
       set({ authUser: res.data });
+      get().connectSocket();
     } catch (error) {
       console.log("Error in authCheck:", error);
       set({ authUser: null });
@@ -27,7 +28,7 @@ export const useAuthStore = create((set, get) => ({
     try {
       const res = await axiosInstance.post("/auth/signup", data);
       set({ authUser: res.data });
-
+      get().connectSocket();
       toast.success("Account created successfully!");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
@@ -41,10 +42,10 @@ export const useAuthStore = create((set, get) => ({
     try {
       const res = await axiosInstance.post("/auth/login", data);
       set({ authUser: res.data });
-
-      toast.success("Logged In!");
       
       get().connectSocket();
+      toast.success("Logged In!");
+
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
     } finally {
@@ -60,7 +61,6 @@ export const useAuthStore = create((set, get) => ({
       get().disconnectSocket();
     } catch (err) {
       toast.error("Error loggin out");
-     
     }
   },
 
@@ -87,7 +87,7 @@ export const useAuthStore = create((set, get) => ({
 
     set({ socket });
 
-   //listen events
+    //listen events
     socket.on("getOnlineUsers", (userIds) => {
       set({ onlineUsers: userIds });
     });
@@ -96,6 +96,4 @@ export const useAuthStore = create((set, get) => ({
   disconnectSocket: () => {
     if (get().socket?.connected) get().socket.disconnect();
   },
-
-
 }));
