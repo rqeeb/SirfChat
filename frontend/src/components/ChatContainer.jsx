@@ -16,21 +16,17 @@ function ChatContainer() {
     unsubscribeFromMessages,
   } = useChatStore();
 
-  const { authUser } = useAuthStore();
+  const { authUser, socket } = useAuthStore();
   const messageEndRef = useRef(null);
 
   useEffect(() => {
+    if (!selectedUser || !socket) return;
+
     getMessagesByUserId(selectedUser._id);
     subscribeToMessages();
 
-    //cleanUp
     return () => unsubscribeFromMessages();
-  }, [
-    selectedUser,
-    getMessagesByUserId,
-    subscribeToMessages,
-    unsubscribeFromMessages,
-  ]);
+  }, [selectedUser, socket]);
 
   useEffect(() => {
     if (messageEndRef.current) {
