@@ -33,6 +33,7 @@ export const useAuthStore = create((set, get) => ({
       toast.success("Account created successfully!");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
+      console.error("Error in signup ",error);
     } finally {
       set({ isSigningUp: false });
     }
@@ -49,6 +50,7 @@ export const useAuthStore = create((set, get) => ({
 
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
+      console.error("Error in login ",error);
     } finally {
       set({ isLoggingIn: false });
     }
